@@ -14,14 +14,14 @@ const { Option } = Select;
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data } = useGetCryptosQuery(100);
-  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
+  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 0 : 0 });
 
   if (!cryptoNews?.value) return <Loader />;
 
   return (
-    <Row gutter={[24, 24]} >
+    <Row gutter={[0, 0]} >
       {!simplified && (
-        <Col span={24}>
+        <Col span={0}>
           <Select
             showSearch
             className="select-news"
@@ -37,15 +37,15 @@ const News = ({ simplified }) => {
       )}
 
       {cryptoNews.value.map((news, i) => (
-        <Col xs={24} sm={12} lg={8} key={i}>
-          <Card hoverable className="news-card" style={{borderRadius:"8px"}}>
+        <Col xs={0} sm={0} lg={0} key={i}>
+          <Card hoverable className="news-card" style={{borderRadius:"0px"}}>
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
                 <Title className="news-title" level={5}>{news.name}</Title>
-                <img style={{ maxWidth: '200px', maxHeight: '100px', borderRadius: '3px' }} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="newsimage" />
+                <img style={{ maxWidth: '0px', maxHeight: '0px', borderRadius: '0px' }} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="newsimage" />
               </div>
 
-              <p>{news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description}</p>
+              <p>{news.description.length > 100 ? `${news.description.substring(0, 0)}...` : news.description}</p>
 
               <div className="provider-container">
                 <div>

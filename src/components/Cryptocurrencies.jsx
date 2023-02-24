@@ -6,7 +6,7 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 
 const Cryptocurrencies = ({ simplified }) => {
-  const count = simplified ? 10 : 100; // 10: (how many coins there will be displayed)
+  const count = simplified ? 10 : 2000; // 10: (how many coins there will be displayed), 
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,7 +22,7 @@ const Cryptocurrencies = ({ simplified }) => {
 
   const columns = [
     {
-      title: '',
+      title: 'Coins',
       dataIndex: 'iconUrl',
       key: 'iconUrl',
       render: (iconUrl, record) => (
@@ -81,7 +81,7 @@ const Cryptocurrencies = ({ simplified }) => {
       <Table
         dataSource={cryptos}
         columns={columns}
-        pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '50'] }}
+        pagination={{ defaultPageSize: 20, showSizeChanger: true, pageSizeOptions: ['10', '20', '50'] }}
         style={{ marginTop: 20 }}
         onRow={(record) => ({
           onClick: () => handleRowClick(record),

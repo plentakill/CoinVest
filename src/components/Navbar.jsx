@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Menu, Typography, Avatar } from "antd";
 import { Link } from "react-router-dom";
-import {
-  HomeOutlined,
-  ReadOutlined,
-  FundOutlined,
-  MenuOutlined,
-} from "@ant-design/icons";
-
+import { HomeOutlined, ReadOutlined, FundOutlined, MenuOutlined } from "@ant-design/icons";
 import icon from "../images/cryptocurrency.png";
 
 const Navbar = () => {
@@ -30,29 +24,26 @@ const Navbar = () => {
   }, [screenSize]);
 
   return (
-    <div className="nav-container">
-      <div className="logo-container">
+    <div style={{ position: "fixed", top: 0, left: 20, right: 0, zIndex: 999, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0px", backgroundColor: "#001529" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <Avatar src={icon} size="large" />
-        <Typography.Title level={2} className="logo">
-          <Link to="/" style={{color:"#F9F5EB"}}>Cryptovest</Link>
+        <Typography.Title level={2} style={{ color: "#F9F5EB", margin: "0px" }}>
+          <Link to="/">Copy site </Link>
         </Typography.Title>
-        <Button
-          className="menu-control-container"
-          onClick={() => setActiveMenu(!activeMenu)}
-        >
+        <Button style={{ display: "none" }} onClick={() => setActiveMenu(!activeMenu)}>
           <MenuOutlined />
         </Button>
       </div>
       {activeMenu && (
-        <Menu theme="dark" style={{padding:"20px"}}>
-          <Menu.Item icon={<HomeOutlined />}>
-            <Link style={{color:"#E8F9FD"}} to="/">Dashboard</Link>
+        <Menu theme="dark" mode="horizontal" style={{ backgroundColor: "#001529", border: "none" }}>
+          <Menu.Item icon={<HomeOutlined />} style={{ float: "right" }}>
+            <Link style={{ color: "#E8F9FD" }} to="/">Dashboard</Link>
           </Menu.Item>
-          <Menu.Item icon={<FundOutlined />}>
-            <Link style={{color:"#E8F9FD"}} to="/cryptocurrencies">Cryptocurrencies</Link>
+          <Menu.Item icon={<ReadOutlined />} style={{ float: "right" }}>
+            <Link style={{ color: "#E8F9FD" }} to="/cryptocurrencies">Cryptocurrencies</Link>
           </Menu.Item>
-          <Menu.Item icon={<ReadOutlined />}>
-            <Link style={{color:"#E8F9FD"}} to="/news">News</Link>
+          <Menu.Item icon={<ReadOutlined />} style={{ float: "right" }}>
+            <Link style={{ color: "#E8F9FD" }} to="/news">Contact Us</Link>
           </Menu.Item>
         </Menu>
       )}
